@@ -1,0 +1,376 @@
+@import './variables.scss';
+@import './sidebar.scss';
+body {
+  height: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+}
+
+label {
+  font-weight: 700;
+}
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+#app {
+  height: 100%;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+.no-padding {
+  padding: 0px !important;
+}
+
+.padding-content {
+  padding: 4px 0;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+a,
+a:focus,
+a:hover {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+
+div:focus {
+  outline: none;
+}
+
+.fr {
+  float: right;
+}
+
+.fl {
+  float: left;
+}
+
+.pr-5 {
+  padding-right: 5px;
+}
+
+.pl-5 {
+  padding-left: 5px;
+}
+
+.block {
+  display: block;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.inlineBlock {
+  display: block;
+}
+
+.clearfix {
+  &:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+  }
+}
+.el-range-separator{
+  width: 7% !important;
+}
+.el-tabs__content{
+  margin-left: 70px;
+}
+.el-dropdown-menu{
+  position: fixed;
+  top: 48px !important;
+}
+
+body .el-table th.gutter{
+  display: table-cell!important;
+}
+
+body .el-table colgroup.gutter{
+  display: table-cell!important;
+}
+.el-breadcrumb__inner a{
+  color: #97A8BE;
+}
+.el-form-item.is-required:not(.is-no-asterisk){
+  .el-form-item__label-wrap{
+    .el-form-item__label:before{
+      content: '';
+    }
+  }
+  .el-form-item__label:before{
+    content: '';
+  }
+}
+.app-breadcrumb.el-breadcrumb {
+  display: inline-block;
+  font-size: 14px;
+  line-height: 40px;
+  margin-left: 8px;
+  .no-redirect {
+    color: #97a8be;
+    cursor: text;
+  }
+}
+.el-breadcrumb__inner a, .el-breadcrumb__inner.is-link{
+  font-weight: inherit;
+  color: #606266;
+}
+.navList{
+  height: 40px;
+  line-height: 40px;
+  overflow: hidden;
+  background: #fff;
+  position: relative;
+}
+.hamburger-container {
+  line-height: 40px;
+  height: 100%;
+  float: left;
+  cursor: pointer;
+  transition: background 0.3s;
+  -webkit-tap-highlight-color: transparent;
+}
+.breadcrumb-container {
+  float: left;
+  line-height: 40px
+}
+.cell{
+  height: 35px;
+  line-height: 35px;
+}
+.app-wrapper {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  &.mobile.openSidebar {
+    position: fixed;
+    top: 0;
+  }
+}
+.drawer-bg {
+  background: #000;
+  opacity: 0.3;
+  width: 100%;
+  top: 0;
+  height: 100%;
+  position: absolute;
+  z-index: 999;
+}
+.fixed-header {
+  position: fixed;
+  top: 60px;
+  right: 0;
+  z-index: 9;
+  width: calc(100% - #{$sideBarWidth});
+}
+
+.hideSidebar .fixed-header {
+  width: calc(100% - 54px)
+}
+
+.mobile .fixed-header {
+  width: 100%;
+}
+.el-table{
+  .cell{
+    line-height: 35px;
+    white-space: nowrap;
+    .el-table__expand-icon{
+      height: 35px;
+    }
+}
+}
+
+.main{
+  >.list-container {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    .filter {
+      width: 100%;
+      height: 40px;
+      display: flex;
+      .field {
+        margin-right: 10px;
+      }
+    }
+    >.data-list {
+      position: absolute;
+      top: 40px;
+      bottom: 60px;
+      width: 100%;
+      >.el-table{
+        height: 100%;
+        >.el-table__body-wrapper{
+          position: absolute;
+          width: 100%;
+          top: 48px;
+          bottom: 0;
+          overflow-y: auto;
+        }
+      }
+    }
+  }
+  >.edit-container {
+    position: absolute;
+    width: 100%;
+    top:0px;
+    bottom: 0;
+    overflow-y: auto;
+    .source-area {
+      max-height: 80px;
+      display: flex;
+      .source-input{
+        width: 360px;
+      }
+      .source-display{
+        flex: 1;
+      }
+    }
+    .bill-area {
+      .el-input-number{
+        width: 221px;
+      }
+    }
+  }
+  >.product {
+    padding: 0 10px;
+    display: flex;
+    max-height: 80px;
+    .sn-area {
+      width: 360px;
+    }
+    .detail-area {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      overflow: auto;
+    }
+    .scrap-area{
+      width: 300px;
+      padding: 10px 0;
+    }
+    .sn-form {
+      padding: 10px 0;
+      .sn {
+        margin-bottom: 0;
+        .field {
+          width: 240px;
+        }
+      }
+    }
+    .detail-form{
+      .detail-form-item{
+        margin-bottom: 0;
+      }
+    }
+  }
+  >.check-area {
+    padding: 0 10px;
+    .issue-codes {
+      width: 100%;
+      .el-form-item__label{
+      }
+      .el-form-item__content {
+        width: 90%;
+      }
+      .issue-code{
+        margin-right: 0;
+        min-width: 23%;
+      }
+    }
+  }
+  >.bill {
+    padding: 0 40px;
+    .bill-title {
+      font-size: 20px;
+      font-weight: bold;
+      line-height: 40px;
+      text-align: center;
+    }
+    .bill-head {
+      padding: 0 100px;
+      .field {
+        margin-right: 0;
+        margin-bottom: 0;
+      }
+      .left{
+        width: 39%;
+      }
+      .center{
+        width: 29%;
+      }
+      .right{
+        width: 29%;
+      }
+    }
+    .bill-body{
+      .none-expand{
+        .el-table__expand-icon{
+          visibility: hidden;
+        }
+      }
+    }
+    .bill-foot{
+      .field {
+        margin-bottom: 0;
+      }
+    }
+  }
+  >.filter {
+    width: 100%;
+    display: flex;
+    padding-left: 10px;
+    justify-content: flex-end;
+    .el-button{
+      padding: 12px 20px;
+    }
+  }
+  >.data-list{
+    position: absolute;
+    width: 100%;
+    top: 40px;
+    bottom: 60px;
+    .el-table {
+      height: 100%;
+      width: 100%;
+      max-width: 100%;
+      flex: 1;
+      overflow: hidden;
+      box-sizing: border-box;
+      .el-table__body-wrapper {
+        position: absolute !important;
+        width: 100%;
+        top: 60px;
+        bottom: 0;
+        overflow-y: auto;
+      }
+      .cell{
+        line-height: 35px;
+      }
+    }
+  }
+}

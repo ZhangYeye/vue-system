@@ -1,0 +1,40 @@
+.list-input {
+  width: 50%;
+  .el-form {
+    span {
+      color: #909399;
+    }
+    .el-form-item {
+      margin-bottom: 10px !important;
+      &.el-form-item--medium {
+        .el-form-item__content {
+          width: 50% !important;
+          height: 50px;
+        }
+      }
+    }
+  }
+}
+.input {
+  width: 35%;
+  margin-bottom: 10px;
+  display: block;
+}
+.el-date-editor{
+  width: 35%;
+  margin-bottom: 10px;
+}
+.error {
+  position: absolute;
+  top: 10px;
+  left: 36%;
+  color: #ff4949;
+  font-size: 12px;
+}
+.el-form-item {
+  margin-bottom: 0;
+}
+
+.el-textarea__inner {
+  height: 80px;
+}

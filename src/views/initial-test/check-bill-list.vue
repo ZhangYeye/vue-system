@@ -1,0 +1,84 @@
+<template>
+  <div class="main">
+    <div class="filter">
+      <div class="field">
+        <el-select class="input" v-model="orgid">
+          <el-option key="0" label="所有维修点" value="0"></el-option>
+          <el-option v-for="org in orgs" :key="org.orgid" :label="org.name" :value="org.orgid"></el-option>
+        </el-select>
+      </div>
+      <div class="field">
+        <el-date-picker
+          type="daterange"
+          v-model="dateRange"
+          range-separator="至"
+          start-placeholder="开始日期"
+          end-placeholder="结束日期"
+        ></el-date-picker>
+      </div>
+      <div class="field">
+        <el-input v-model="sn" placeholder="SN" clearable></el-input>
+      </div>
+      <div class="search-button">
+        <el-button type="primary" icon="el-icon-search">搜索</el-button>
+      </div>
+    </div>
+    <div class="data-list">
+      <el-table :stripe="true" :data="checkBillList">
+        <el-table-column prop="org" label="维修点" width="80px"></el-table-column>
+        <el-table-column prop="date" label="日期" width="120px" align="center"></el-table-column>
+        <el-table-column prop="code" label="单据编号" width="220px" align="center"></el-table-column>
+        <el-table-column prop="product" label="SN" width="180px" align="center">
+          <template slot-scope="checkBillList">
+            <el-link>
+              <router-link to="product-query-detail" class="hover">{{checkBillList.row.product.sn}}</router-link>
+            </el-link>
+          </template>
+        </el-table-column>
+        <el-table-column prop="productType" label="销售编码">
+          <template slot-scope="checkBillList">
+            <span>{{checkBillList.row.productType.code}} {{checkBillList.row.productType.name}}</span>
+          </template>
+        </el-table-column>
+        <el-table-column prop="issueCodes" label="不良代码">
+          <template slot-scope="checkBillList">
+            <span
+              v-for="(issueCode, index) in checkBillList.row.issueCodes"
+            >{{index == 0 ? '' : '，'}}{{issueCode.name}}({{issueCode.code}})</span>
+          </template>
+        </el-table-column>
+        <el-table-column prop="oper" label="操作" width="120px" align="center">
+          <template slot-scope="checkBillList">
+            <router-link to="check-bill-info">
+              <el-button type="small" icon="el-icon-view" @click="clickDetail">查看</el-button>
+            </router-link>
+          </template>
+        </el-table-column>
+      </el-table>
+    </div>
+  </div>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        dateRange: "",
+        orgid: "",
+        sn: "",
+        orgs: [
+          {
+            orgid: 1,
+            name: "深圳天任顺华"
+          }
+        ]
+      };
+    },
+    methods: {}
+  };
+</script>
+
+<style lang="scss" scoped>
+  @import "~@/styles/common.scss";
+</style>
+
